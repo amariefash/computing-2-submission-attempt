@@ -1,0 +1,126 @@
+<!-- In HTML Comments are written like this -->
+<!-- They can all be removed for your apps -->
+<!doctype html> <!-- This first line tells browsers to expect modern standard html 5 -->
+<html lang="en-gb"> <!-- This is indicates the page is written in British English, useful for accessibility -->
+<meta charset="utf-8"> <!-- This indicates how the file is encoded. utf-8 is standard -->
+<title>Twilight (Othello!)</title> <!-- All pages need a title, this will be displayed in the browser's title bar -->
+<link rel="stylesheet" href="default.css"> <!-- Import style sheet – default.css -->
+<link rel="icon" href="./assets/favicon.png"> <!-- Import 'Favorites Icon' – favicon.png -->
+<script type="module" src="main.js"></script> <!-- Load the main script. Must be type="module". Have only one of these -->
+
+
+<body>
+    <header>
+        <div class="header-icons">
+            <button type="button" id="settingsButton" aria-label="Settings">
+                <img class="header-icon" src="./assets/settingsIcon.png" alt="Settings">
+            </button>
+            <button type="button" id="statsButton" aria-label="Statistics">
+                <img class="header-icon" src="./assets/statsIcon.png" alt="Statistics">
+            </button>
+        </div>
+        <h1>Twilight</h1>
+        <a href="../docs/index.html" class="header-link">API Documentation</a>
+        
+    </header>
+
+    <main>
+        <div id="boardBackground">
+            <div id="boardGrid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <span id="turnIndicator">Sun's Turn</span>
+    </footer>
+
+    <div class="score-bubble score-bubble--sun">
+        <div class="score-content">
+            <span class="score-label">Sun:</span>
+            <span id="scorePlayerOne" class="score-number">2</span>
+        </div>
+    </div>
+    <div class="score-bubble score-bubble--moon">
+        <div class="score-content">
+            <span class="score-label">Moon:</span>
+            <span id="scorePlayerTwo" class="score-number">2</span>
+        </div>
+    </div>
+
+    <!-- settings pop up -->
+    <dialog id="settingsDialog">
+        <div class="dialog-header">
+            <h2>Settings</h2>
+            <button type="button" class="dialog-close" id="settingsClose" aria-label="Close">×</button>
+        </div>
+        <hr>
+        <div class="dialog-row">
+            <span>Placement Hints</span>
+            <label class="toggle">
+                <input type="checkbox" id="showPossibleMovesToggle" aria-label="Show Possible Moves" checked>
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+    </dialog>
+
+    <!-- Statistics pop up -->
+    <dialog id="statsDialog">
+        <div class="dialog-header">
+            <h2>Statistics</h2>
+            <button type="button" class="dialog-close" id="statsClose" aria-label="Close">×</button>
+        </div>
+        <hr>
+        <div class="stats-grid">
+            <div class="stats-card stats-card--sun">
+                <p class="stats-card-title">Sun:</p>
+                <hr>
+                <div class="stats-row"><span>Wins:</span> <span id="statP1Wins">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Losses:</span>  <span id="statP1Losses">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Draws:</span> <span id="statP1Draws">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Streak:</span> <span id="statP1Streak">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Best Streak:</span> <span id="statP1Best">0</span></div>
+            </div>
+            <div class="stats-card stats-card--moon">
+                <p class="stats-card-title">Moon:</p>
+                <hr>
+                <div class="stats-row"><span>Wins:</span> <span id="statP2Wins">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Losses:</span> <span id="statP2Losses">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Draws:</span> <span id="statP2Draws">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Streak:</span> <span id="statP2Streak">0</span></div>
+                <hr>
+                <div class="stats-row"><span>Best Streak:</span> <span id="statP2Best">0</span></div>
+            </div>
+        </div>
+    </dialog>
+
+
+    <dialog id="gameOverDialog">
+        <p id="gameOverResult" class="gameover-result"></p>
+        <hr>
+        <p id="gameOverScore" class="gameover-score"></p>
+        <hr>
+        <button type="button" id="playAgainButton" class="play-again-button">Play Again</button>
+    </dialog>
+
+
+    <dialog id="introDialog">
+        <h2 class="intro-title">The Sun and Moon are fighting to claim the sky!</h2>
+        <hr>
+        <p class="intro-body">
+            Place your discs so that they trap one or more of your opponent's
+            discs between them. This can
+            happen horizontally, vertically, or diagonally!
+        </p>
+        <p class="intro-body">
+            Control the majority of the board to win and take over the Twilight!
+        </p>
+        <button type="button" id="introStart" class="play-again-button">Start!</button>
+    </dialog>
+</body>
